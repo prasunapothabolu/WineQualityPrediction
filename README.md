@@ -15,7 +15,7 @@ Decision Tree classifier give better performance. The metrics used to estimate p
 --- 
 ## Table of Contents
 - [Upload Input Files to S3](#Upload Input Files to S3)
-- [EMR Installation](#EMR-Installation)
+- [EMR Creation and Setup](#EMR-Installation)
 - [EC2 Instance without Docker](#EC2-Instance-without-Docker)
 - [EC2 Instance With Docker](#EC2-Instance-With-Docker)
 - [TroubleShooting](#Troubleshooting)
