@@ -30,7 +30,7 @@ Decision Tree classifier give better performance. The metrics used to estimate p
 ***URL***: ```
 url : s3://mywineproject/ ```
 
-### EMR Installation
+### EMR Creation and Setup
 
 
 2) **Creating an EMR cluster**
