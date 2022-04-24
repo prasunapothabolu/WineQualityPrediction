@@ -30,9 +30,10 @@ Decision Tree classifier give better performance. The metrics used to estimate p
 ***URL***: ```
 url : s3://mywineproject/ ```
 
+---
+
 ### EMR Creation and Setup
 
----
 2) **Creating an EMR cluster**
 
 * **2.1**. Login to AWS console and create a IAM role for ec2 instance to give access to s3 so that ec2 instace can have access to download (CSV files) and upload files (Model file) to s3.
