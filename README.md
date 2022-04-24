@@ -26,22 +26,23 @@ Decision Tree classifier give better performance. The metrics used to estimate p
 
 ### Upload Input Files to S3
 1. Create S3 bucket mlprojectfiles at AWS
-2.*TrainingDataset.csv, ValidationDataset.csv and trained model data* were uploaded to S3 Bucket:
-
+2.*TrainingDataset.csv, ValidationDataset.csv and trained model data* were uploaded to S3 Bucket
+3. check files upload by accessing S3 bucket or executing below command at  aws cli
+          aws s3 ls s3://mlprojectfiles/
 ***URL***: ```
-url : s3://mywineproject/ ```
+url : s3://mlprojectfiles/ ```
 
 ---
 
 ### EMR Creation and Setup
 
-2) **Creating an EMR cluster**
+1) **Creating an EMR cluster**
 
-* **2.1**. Login to AWS console and create a IAM role for ec2 instance to give access to s3 so that ec2 instace can have access to download (CSV files) and upload files (Model file) to s3.
+* **1.1**. Login to AWS console and create a IAM role for ec2 instance to give access to s3 so that ec2 instace can have access to download (CSV files) and upload files (Model file) to s3.
 
-* **2.2**. Alternatively, you can also set your s3 bucket to public to give access to your files, **Note: This is generally not recommended as it has high security risks. If you are using an AWS Educate account you cannot modify your IAM policy and in such a scenario you can utilize this step**
+* **1.2**. Alternatively, you can also set your s3 bucket to public to give access to your files, **Note: This is generally not recommended as it has high security risks. If you are using an AWS Educate account you cannot modify your IAM policy and in such a scenario you can utilize this step**
 
-3) **Creating a Cluster**
+2) **Creating a Cluster**
 
 ***Step 1:*** In the AWS dashboard under the `analytics` section click `EMR`
 
