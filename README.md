@@ -16,7 +16,8 @@ Decision Tree classifier give better performance. The metrics used to estimate p
 ## Table of Contents
 
 - [Upload Input Files to S3](#Upload-Input-Files-S3)
-- [EMR Creation and Setup](#EMR-Installation)
+- [EMR Cluster Creation and Setup](#EMR-Installation)
+- [Run Model Train data application on EMR Cluster](#Model-App-run)
 - [EC2 Instance without Docker](#EC2-Instance-without-Docker)
 - [EC2 Instance With Docker](#EC2-Instance-With-Docker)
 - [Result and Summary](#Result&Summary)
@@ -43,7 +44,7 @@ Decision Tree classifier give better performance. The metrics used to estimate p
 
 ---
 
-### EMR Creation and Setup
+### EMR Cluster Creation and Setup
 
 1) **Creating an EMR cluster**
 
@@ -65,21 +66,29 @@ Decision Tree classifier give better performance. The metrics used to estimate p
           
 ***Step 4:*** Click Create Cluster button. Wait for around 15 minutes for the cluster to start functioning. 
 
-***Alternative Step***: If you want to create EMR cluster using command line interface , please use below
+          ***Alternative Step***: If you want to create EMR cluster using command line interface , please use below
 
-```
-aws emr create-cluster \
---name "<My First EMR Cluster>" \
---release-label <emr-5.35.0> \
---applications Name=Spark \
---ec2-attributes KeyName=<myEMRKeyPairName> \
---instance-type m5.xlarge \
---instance-count 4 \
---use-default-roles	
-```
+          ```
+          aws emr create-cluster \
+          --name "<My First EMR Cluster>" \
+          --release-label <emr-5.35.0> \
+          --applications Name=Spark \
+          --ec2-attributes KeyName=<myEMRKeyPairName> \
+          --instance-type m5.xlarge \
+          --instance-count 4 \
+          --use-default-roles	
+          ```
+***Step 5:***  Once cluser is stared and waiting. At "Security and access" ,click on Master server and edit inbound rules to add SSH type access
+ 
+ 
+ ***Step 6:*** At summary section of EMR cluster, click on Connect to the Master Node Using SSH"  to find server details and commands to connect EMR cluster
+ 
+---
+###Run Model Train data application on EMR Cluster
+
+
 
 ---
-
 ### EC2 Instance without Docker
 
 1) **Creating EC2 Instance**
