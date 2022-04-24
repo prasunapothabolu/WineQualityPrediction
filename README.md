@@ -23,14 +23,15 @@ Decision Tree classifier give better performance. The metrics used to estimate p
 
 ---
 
-### EMR Installation
-
-1) **Uploading Files**
-
-*TrainingDataset.csv, ValidationDataset.csv and trained model data* were uploaded to S3 Bucket:
+### Upload Input Files to S3
+1. Create S3 bucket mlprojectfiles at AWS
+2.*TrainingDataset.csv, ValidationDataset.csv and trained model data* were uploaded to S3 Bucket:
 
 ***URL***: ```
 url : s3://mywineproject/ ```
+
+### EMR Installation
+
 
 2) **Creating an EMR cluster**
 
