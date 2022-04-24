@@ -176,8 +176,10 @@ Example
 docker run -it sampathgonnuru/cs643-project2:latest s3//mywineproject/ValidationDataset.csv 
 ```
 ---
-### Result& Summary
+### Result & Summary
 
+
+---
 ### Troubleshooting
 
 > In a scenario where one is unable to execute the program in the desired format then in such a case run the below commands
