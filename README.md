@@ -111,8 +111,8 @@ pip install py4j
 ```
 * **Step 6:** Install Spark and hadoop
 ```bash
-wget http://archive.apache.org/dist/spark/spark-3.0.0/spark-3.0.0-bin-hadoop2.7.tgz
-sudo tar -zxvf spark-3.0.0-bin-hadoop2.7.tgz
+!wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop2.7.tgz   
+!tar xf spark-3.2.1-bin-hadoop2.7.tgz 
 ```
 
 * **step 7:** Install findspark
@@ -203,7 +203,7 @@ docker run -it sampathgonnuru/cs643-project2:latest s3//mywineproject/Validation
 sudo pip install --upgrade pip
 ```
 ```bash 
-sudo pip install wheel
+sudo pip3 install -U scikit-learn
 ```
 ```bash 
 sudo pip install pyspark --no-cache-dir
