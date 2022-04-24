@@ -26,11 +26,20 @@ Decision Tree classifier give better performance. The metrics used to estimate p
 
 ### Upload Input Files to S3
 1. Create S3 bucket mlprojectfiles at AWS
-2.*TrainingDataset.csv, ValidationDataset.csv and trained model data* were uploaded to S3 Bucket
-3. check files upload by accessing S3 bucket or executing below command at  aws cli
+
+2. Login to AWS console and create a IAM role for ec2 instance to give access to s3 so that ec2 instace can have access to download (CSV files) and upload files (Model file) to s3.
+
+3. Alternatively, we can give s3 bucket to public to give access to your files, **Note: This is generally not recommended as it has high security risks. It can be used when we dont have access to change IAM role policies.
+
+
+4. Upload Datasets TrainingDataset.csv, ValidationDataset.csv and trained model data* to S3 Bucket
+
+5. check files upload by accessing S3 bucket or executing below command at  aws cli
+
           aws s3 ls s3://mlprojectfiles/
-***URL***: ```
-url : s3://mlprojectfiles/ ```
+          
+          ***S3 URL***: ```
+          url : s3://mlprojectfiles/ ```
 
 ---
 
@@ -38,32 +47,35 @@ url : s3://mlprojectfiles/ ```
 
 1) **Creating an EMR cluster**
 
-* **1.1**. Login to AWS console and create a IAM role for ec2 instance to give access to s3 so that ec2 instace can have access to download (CSV files) and upload files (Model file) to s3.
-
-* **1.2**. Alternatively, you can also set your s3 bucket to public to give access to your files, **Note: This is generally not recommended as it has high security risks. If you are using an AWS Educate account you cannot modify your IAM policy and in such a scenario you can utilize this step**
-
-2) **Creating a Cluster**
-
 ***Step 1:*** In the AWS dashboard under the `analytics` section click `EMR`
 
 ***Step 2:*** Now Click `Create Cluster` 
 
-***Step 3:*** In the `General Configuration` for `Cluster Name` type desired cluster name.
+***Step 3:*** In the `General Configuration` for `Cluster Name` type cluster name.
 
-* **Step 3.1**: Under ``Software configuration` in the application column click the button which shows `Spark: Spark 2.4.7 on Hadoop 2.10.1 YARN and Zeppelin 0.8.2``. 
+* **Step 3.1**: Under ``Software configuration` in the applications field click the button for option `Spark: Spark 2.4.8 on Hadoop 2.10.1 YARN and Zeppelin 0.10.0``. 
           
-* **Step 3.2:** Under `Hardware Configuration` click `m4.large` rather than the default `m5.xlarge` as the default m5.xlarge incurs a cost of $0.043/hr in contrast to the $0.03 for m4.large. Keep in mind that EMR incurs an additional 25% cost post first usage. 
+* **Step 3.2:** Under `Hardware Configuration` leave the default `m5.xlarge` as the default m5.xlarge 
           
-* **Step 3.4:** Select `4` instances under the column `Number of instances` 
+* **Step 3.3:**  Under `Hardware Configuration` , enter `4` instances for `Number of instances` 
+
+* **Step 3.e:**  Under `Hardware Configuration` , unchecked "Enable auto termination" of Auto-termination field
           
-* **Step 3.5:** Under `Security and access` click the EC2 key pair already created else create a new one
+* **Step 3.5:** Under `Security and access` select the EC2 key pair already created else create a new one
           
 ***Step 4:*** Click Create Cluster button. Wait for around 15 minutes for the cluster to start functioning. 
 
-***Alternative Step***: If you want to create the above procedure using command line you can use this 
+***Alternative Step***: If you want to create EMR cluster using command line interface , please use below
 
 ```
-aws emr create-cluster --applications Name=Hadoop Name=Spark --ec2-attributes '{"InstanceProfile":"EMR_EC2_DefaultRole","SubnetId":"subnet-5a042c64","EmrManagedSlaveSecurityGroup":"sg-0233a1837a16a7902","EmrManagedMasterSecurityGroup":"sg-0a31cc8dff123ed0b"}' --release-label emr-5.29.0 --log-uri 's3n://aws-logs-700559207820-us-east-1/elasticmapreduce/' --steps '[{"Args":["spark-submit","--deploy-mode","client","--packages","org.apache.hadoop:hadoop-aws:2.7.7","s3://mywineproject/train.py"],"Type":"CUSTOM_JAR","ActionOnFailure":"TERMINATE_CLUSTER","Jar":"command-runner.jar","Properties":"","Name":"Spark application"}]' --instance-groups '[{"InstanceCount":1,"EbsConfiguration":{"EbsBlockDeviceConfigs":[{"VolumeSpecification":{"SizeInGB":32,"VolumeType":"gp2"},"VolumesPerInstance":3}]},"InstanceGroupType":"MASTER","InstanceType":"m4.large","Name":"Master Instance Group"},{"InstanceCount":4,"EbsConfiguration":{"EbsBlockDeviceConfigs":[{"VolumeSpecification":{"SizeInGB":32,"VolumeType":"gp2"},"VolumesPerInstance":3}]},"InstanceGroupType":"CORE","InstanceType":"m4.large","Name":"Core Instance Group"}]' --configurations '[{"Classification":"spark","Properties":{}}]' --auto-terminate --service-role EMR_DefaultRole --enable-debugging --name 'CS643WineApp' --scale-down-behavior TERMINATE_AT_TASK_COMPLETION --region us-east-1
+aws emr create-cluster \
+--name "<My First EMR Cluster>" \
+--release-label <emr-5.35.0> \
+--applications Name=Spark \
+--ec2-attributes KeyName=<myEMRKeyPairName> \
+--instance-type m5.xlarge \
+--instance-count 4 \
+--use-default-roles	
 ```
 
 ---
