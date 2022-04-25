@@ -84,6 +84,7 @@ Decision Tree classifier give better performance. The metrics used to estimate p
  ***Step 6:*** At summary section of EMR cluster, click on Connect to the Master Node Using SSH"  to find server details and commands to connect EMR cluster
  
 ---
+
 ###Run Model Train data application on EMR Cluster
 
 
@@ -135,6 +136,7 @@ sudo pip3 install numpy
 3) **Running your Application in EC2**
 * Copy the PredictWineQuality.py file to the Ec2 instance ```
 Note: we can copy using tools( mobaXtern, putty etc)
+
 scp -i <"your .pem file"> predict.py :~/predict.py```
 
 * Run the following command in Ec2 instance to start the model prediction :
