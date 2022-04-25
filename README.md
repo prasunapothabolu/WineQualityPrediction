@@ -128,7 +128,10 @@ pip install py4j
 ```bash
 sudo pip3 install findspark
 ```
-
+* **step 8:** Install findspark
+```bash
+sudo pip3 install numpy
+```
 3) **Running your Application in EC2**
 * Copy the PredictWineQuality.py file to the Ec2 instance ```
 Note: we can copy using tools( mobaXtern, putty etc)
