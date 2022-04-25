@@ -107,11 +107,11 @@ sudo yum update -y
 * **step 2:** Check python version ```python3 --version```
 * **Step 3:** Instal pip 
 ```bash
-sudo pip install --upgrade pip
+sudo pip3 install --upgrade pip
 ```
 * **step 4:** Install Java and check if it works
 ```bash
-sudo apt-get install default-jre
+sudo yum install java-1.8.0-devel
 java --version
 ```
 * **step 5:** Install Py4j
@@ -120,17 +120,18 @@ pip install py4j
 ```
 * **Step 6:** Install Spark and hadoop
 ```bash
-!wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop2.7.tgz   
+!wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop2.7.tgz    
 !tar xf spark-3.2.1-bin-hadoop2.7.tgz 
 ```
 
 * **step 7:** Install findspark
 ```bash
-sudo pip install findspark
+sudo pip3 install findspark
 ```
 
 3) **Running your Application in EC2**
-* Copy the predict.py ![](https://github.com/Gonnuru/CS643-WinePrediction/blob/main/predict.py) file to the Ec2 instance ```
+* Copy the PredictWineQuality.py file to the Ec2 instance ```
+Note: we can copy using tools( mobaXtern, putty etc)
 scp -i <"your .pem file"> predict.py :~/predict.py```
 
 * Run the following command in Ec2 instance to start the model prediction :
