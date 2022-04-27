@@ -185,14 +185,22 @@ if no classifier parameter is passed , application will predict using decission 
 
           gbt for GBT regressor
   b)you can pass test data file with any name. please make sure file exists on EC2.
+  
 commands:
 python3 PredictWineQuality.py TestDataset.csv lgr
+
 or
+
 python3 PredictWineQuality.py TestDataset.csv rfc
+
 or
+
 python3 PredictWineQuality.py TestDataset.csv dst
+
 or
+
 python3 PredictWineQuality.py TestDataset.csv gbt
+
 ---
 * Outputs files are loaded in output folder.
 *
@@ -284,7 +292,7 @@ docker push prasunapothabolu/winequalitypredict
 
 docker pull prasunapothabolu/winequalitypredict:latest
 
-sudo docker run -v /home/ubuntu prasunapothabolu/winequalitypredict TestDataset.csv
+**sudo docker run -v /home/ubuntu prasunapothabolu/winequalitypredict TestDataset.csv**
 ---
 ### Result & Summary
 
