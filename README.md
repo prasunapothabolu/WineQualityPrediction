@@ -9,12 +9,12 @@ The Training Data was modelled using multiple classifiers to find classifier tha
 Logistic regression, GBT regressor, Random forest classifier, Decision Tress classifier are used.
 Decision Tree classifier give better performance. The metrics used to estimate performance are Run time,F1 score and Accuracy score.
 
-The application is designed to run logistic regression, Random forest classfier, Decission tree classfier, GBT regressor. you can pass parameter to choose classifier.
-if no classifier parameter is passed , application will predict using decission tree classifier since based on metrics it worked best.
+The application is designed to run logistic regression, Random forest classifier, Decision tree classifier, GBT regressor. you can pass parameter to choose classifier.
+if no classifier parameter is passed , application will predict using decision tree classifier since based on metrics it worked best.
 
-Time taken for Decission tree classifier modelling  in seconds 0.8110044002532959
+Time taken for Decision tree classifier modelling  in seconds 0.8110044002532959
 
-Scores of modelling data using Decission tree classifier : Accuracy is 100 and F1 score is 100
+Scores of modelling data using Decision tree classifier : Accuracy is 100 and F1 score is 100
 
 
 
