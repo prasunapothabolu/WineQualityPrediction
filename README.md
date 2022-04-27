@@ -308,7 +308,7 @@ sudo docker run -v /home/ubuntu prasunapothabolu/mlwinequalpredict TestDataset.c
 
 ---
 ### Result & Summary
-> Decission tree classfier worked well compare to other classfiers . It ran in less time with accuracy 100 and F1 Score 100
+> Decision tree classifier worked well compare to other classfiers . It ran in less time with accuracy 100 and F1 Score 100
 * Outputs files are loaded in output folder.
 ---
 ### Troubleshooting
