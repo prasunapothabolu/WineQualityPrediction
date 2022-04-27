@@ -1,0 +1,25 @@
+Arguments passed 3   TestDataset.csv   lbr
+Entered wrong classifier
+
+Enter lgr for logistic regression modelling
+ gbt for Gradient-Boosted Trees  regressor 
+ dst for Decission tree classifier
+ rfc for Randomforest classfier
+Predicting with Decission tree Model
+Label and prediction
+    """"quality"""""  prediction
+0                 5         5.0
+1                 5         5.0
+2                 5         5.0
+3                 6         6.0
+4                 5         5.0
+Scores for Predicting data
+============================================
+Accuracy 1.0
+F1 score: 1.0
+Confusion Matrix: [[ 1  0  0  0  0  0]
+ [ 0  2  0  0  0  0]
+ [ 0  0 66  0  0  0]
+ [ 0  0  0 65  0  0]
+ [ 0  0  0  0 22  0]
+ [ 0  0  0  0  0  4]]
