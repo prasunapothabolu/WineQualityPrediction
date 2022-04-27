@@ -90,7 +90,7 @@ Scores of modelling data using Decision tree classifier : Accuracy is 100 and F1
           --instance-count 4 \
           --use-default-roles	
           ```
-***Step 5:***  Once cluser is stared and waiting. At "Security and access" ,click on Master server and edit inbound rules to add SSH type access
+***Step 5:***  Once cluster is stared and waiting. At "Security and access" ,click on Master server and edit inbound rules to add SSH type access
  
  
  ***Step 6:*** At summary section of EMR cluster, click on Connect to the Master Node Using SSH"  to find server details and commands to connect EMR cluster
@@ -103,7 +103,7 @@ Scores of modelling data using Decision tree classifier : Accuracy is 100 and F1
 
 ***Step 2:*** copy ModelWineDataTrain.py to master host
 
-***Step 3:*** run below comamnd to train model
+***Step 3:*** run below command to train model
 
 spark-submit --packages org.apache.hadoop:hadoop-aws:2.7.7 ModelWineDataTrain.py
 
@@ -187,18 +187,15 @@ python3 ModelWineDataTrain.py validationDataset.csv
 ```
 * Run the following command in Ec2 instance to start the predict :
 
-Example of using input file as argument . since we set environment variables we can use command python3 directly.
-         a) the application is designed to run logistic regression, Random forest classfier, Decission tree classfier, GBT regressor. you can pass parameter to choose classifier.
-if no classifier parameter is passed , application will predict using decission tree classifier
+Example of using input file as argument. since we set environment variables, we can use command python3 directly. a) the application is designed to run logistic regression, Random forest classifier, Decision tree classifier, GBT regressor. you can pass parameter to choose classifier. if no classifier parameter is passed, application will predict using decision tree classifier
+      lgr for logistic regression
 
+      rfc for Random forest classifier
 
-          lgr for logistic regression
+      dst for Decision tree classifier
 
-          rfc for Random forest classfier
+      gbt for GBT regressor
 
-          dst for Decission tree classfier
-
-          gbt for GBT regressor
   b)you can pass test data file with any name. please make sure file exists on EC2.
   
 commands:
