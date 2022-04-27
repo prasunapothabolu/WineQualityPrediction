@@ -94,7 +94,13 @@ if no classifier parameter is passed , application will predict using decission 
 
 ### Run Model Train data application on EMR Cluster
 
+***Step 1:*** connect master host using key and tool ( you can get master host details at EMR cluster summary seciton)
 
+***Step 2:*** copy ModelWineDataTrain.py to master host
+
+***Step 3:*** run below comamnd to train model
+
+spark-submit --packages org.apache.hadoop:hadoop-aws:2.7.7 ModelWineDataTrain.py
 
 ---
 ### EC2 Instance without Docker
