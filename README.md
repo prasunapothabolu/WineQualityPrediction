@@ -142,16 +142,24 @@ sudo pip3 install pandas
 ```bash
 sudo pip3 install -U scikit-learn
 ```
+ **step 10:** set environment variables
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+ export SPARK_HOME=/home/ubuntu/spark-3.0.0-bin-hadoop2.7
+ export PATH=$PATH:$SPARK_HOME/bin
+ export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
+ export PYSPARK_PYTHON=python3
+ export PATH=$PATH:$JAVA_HOME/jre/bin
+ 
 3) **Running your Application in EC2**
-* Copy the PredictWineQuality.py file to the Ec2 instance ```
+* Copy the ModelWineDataTrain.py,PredictWineQuality.py,TrainingDataset.csv,ValidationDataset.csv files to the Ec2 instance ```
 Note: we can copy using tools( mobaXtern, putty etc)
-
-scp -i <"your .pem file"> predict.py :~/predict.py```
+or using commands 
+scp -i <"your .pem file"> predict.py :~/PredictWineQuality.py```
 
 * Run the following command in Ec2 instance to start the model prediction :
-Example of using S3 file as argument 
+Example of using input file as argument . since we set environment variables we can use command python3 directly
 ```bash
-spark-submit --packages org.apache.hadoop:hadoop-aws:2.7.7 predict.py s3://mywineproject/ValidationDataset.csv
+python3 ModelWineDataTrain.py validationDataset.csv
 ```
 ---
 
