@@ -12,6 +12,11 @@ Decision Tree classifier give better performance. The metrics used to estimate p
 The application is designed to run logistic regression, Random forest classfier, Decission tree classfier, GBT regressor. you can pass parameter to choose classifier.
 if no classifier parameter is passed , application will predict using decission tree classifier since based on metrics it worked best.
 
+Time taken for Decission tree classifier modelling  in seconds 0.8110044002532959
+
+Scores of modelling data using Decission tree classifier : Accuracy is 100 and F1 score is 100
+
+
 
 > Github Link: https://github.com/prasunapothabolu/WineQualityPrediction
 
@@ -102,6 +107,7 @@ if no classifier parameter is passed , application will predict using decission 
 
 spark-submit --packages org.apache.hadoop:hadoop-aws:2.7.7 ModelWineDataTrain.py
 
+***Step 4: Outputs files are loaded in output folder.
 ---
 ### EC2 Instance without Docker
 
@@ -135,8 +141,8 @@ pip install py4j
 ```
 * **Step 6:** Install Spark and hadoop
 ```bash
-!wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop2.7.tgz    
-!tar xf spark-3.2.1-bin-hadoop2.7.tgz 
+!wget http://archive.apache.org/dist/spark/spark-3.0.0/spark-3.0.0-bin-hadoop2.7.tgz
+!tar -zxvf spark-3.0.0-bin-hadoop2.7.tgz
 ```
 
 * **step 7:** Install pyspark
@@ -210,7 +216,7 @@ or
 
 python3 PredictWineQuality.py TestDataset.csv gbt
 
----
+
 * Outputs files are loaded in output folder.
 
 ### EC2 Instance With Docker
@@ -305,8 +311,8 @@ docker pull prasunapothabolu/mlwinequalpredict:latest
 **
 ---
 ### Result & Summary
-
-
+> Decission tree classfier worked well compare to other classfiers . It ran in less time with accuracy 100 and F1 Score 100
+* Outputs files are loaded in output folder.
 ---
 ### Troubleshooting
 
@@ -366,5 +372,15 @@ sudo docker login -u sampathgonnuru <ur docker-hub username>
 sudo groupadd docker
 ```
 
-
+```bash 
+sudo chmod 666 /var/run/docker.sock
+```
+```bash 
+sudo docker images
+```
+```bash 
+below commands remove and cleanup all images
+docker image rm -f f3b1202282c1
+docker system prune --all --force
+```
 
