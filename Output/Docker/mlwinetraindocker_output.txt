@@ -1,0 +1,67 @@
+***********************************************************************
+Argument passed is : TrainingDataset.csv
+***********************************************************************
+root
+ |-- """""fixed acidity"""": double (nullable = true)
+ |-- """"volatile acidity"""": double (nullable = true)
+ |-- """"citric acid"""": double (nullable = true)
+ |-- """"residual sugar"""": double (nullable = true)
+ |-- """"chlorides"""": double (nullable = true)
+ |-- """"free sulfur dioxide"""": double (nullable = true)
+ |-- """"total sulfur dioxide"""": double (nullable = true)
+ |-- """"density"""": double (nullable = true)
+ |-- """"pH"""": double (nullable = true)
+ |-- """"sulphates"""": double (nullable = true)
+ |-- """"alcohol"""": double (nullable = true)
+ |-- """"quality""""": integer (nullable = true)
+
+Time taken for logistic regression modelling in seconds 24.446043252944946
+Scores of Modelling data using logistic regression
+================================================
+Accuracy: 0.8749022673964034
+F1 score: 0.8657390530970609
+Confusion Matrix: [[  5   4   0   0   0   0]
+ [  1  19  25   0   0   0]
+ [  2   0 502  25   0   0]
+ [  0   0  36 479   7   0]
+ [  0   0   2  45 114   0]
+ [  0   0   0   0  13   0]]
+
+
+Time taken for Random Forest classfier modelling  in seconds 4.914787530899048
+Scores of Modelling data using RandomForest Classifier
+=============================================
+Accuracy: 0.9538702111024238
+F1 score: 0.9538702111024238
+Confusion Matrix: [[  0   0   9   0   0   0]
+ [  0   8  37   0   0   0]
+ [  0   0 529   0   0   0]
+ [  0   0   0 522   0   0]
+ [  0   0   0   0 161   0]
+ [  0   0   0   1  12   0]]
+
+
+Time taken for Gradient-Boosted Trees  regressor  modelling  in seconds 18.91512417793274
+Scores of Modelling data using Decission tree classifier
+============================================
+Accuracy 1.0
+F1 score: 1.0
+Confusion Matrix: [[  9   0   0   0   0   0]
+ [  0  45   0   0   0   0]
+ [  0   0 529   0   0   0]
+ [  0   0   0 522   0   0]
+ [  0   0   0   0 161   0]
+ [  0   0   0   0   0  13]]
+
+
+Time taken for Decission tree classifier modelling  in seconds 1.3837306499481201
+Scores of Modelling data using Decission tree classifier
+============================================
+Accuracy 1.0
+F1 score: 1.0
+Confusion Matrix: [[  9   0   0   0   0   0]
+ [  0  45   0   0   0   0]
+ [  0   0 529   0   0   0]
+ [  0   0   0 522   0   0]
+ [  0   0   0   0 161   0]
+ [  0   0   0   0   0  13]]
