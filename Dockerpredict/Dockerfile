@@ -53,15 +53,22 @@ ENV PROG_DIR /mlprog
 
 #Set filename of ML Python file
 ENV PROG_NAME PredictWineQuality.py
-
-
+ENV TRAIN_NAME TrainingDataset.csv
+ENV VAL_NAME ValidationDataset.csv
+ENV TEST_NAME TestDataset.csv
 #Set Workdir as set in env variable PROG_DIR
 WORKDIR ${PROG_DIR}
 
 
 #Copy python files, and datasets to work directory
 ADD ${PROG_NAME} . 
-
+ADD ${TRAIN_NAME} .
+ADD ${TEST_NAME} .
+ADD ${VAL_NAME} .
+ADD DSTml-model ./DSTml-model/
+ADD GBTml-model ./GBTml-model/
+ADD lgreg-model ./lgreg-model/
+ADD Rfcml-model ./Rfcml-model/
 
 
 #Set startup executable of docker as spark submit
