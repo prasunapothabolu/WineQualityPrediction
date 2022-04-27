@@ -284,13 +284,13 @@ sudo docker run -v /home/ubuntu prasunapothabolu/winetrainapp TrainingDataset.cs
 
 changed Dockerfile to use PredictWineQuality.py app
 
-sudo docker build . -f Dockerfile -t winequalitypredict
+sudo docker build . -f Dockerfile -t mlwinequalpredict
 
-docker tag winequalitypredict prasunapothabolu/winequalitypredict
+docker tag mlwinequalpredict prasunapothabolu/mlwinequalpredict
 
-docker push prasunapothabolu/winequalitypredict
+docker push prasunapothabolu/mlwinequalpredict
 
-docker pull prasunapothabolu/winequalitypredict:latest
+docker pull prasunapothabolu/mlwinequalpredict:latest
 
 **sudo docker run -v /home/ubuntu prasunapothabolu/mlwinequalpredict TestDataset.csv
 **
