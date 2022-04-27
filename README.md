@@ -292,7 +292,8 @@ docker push prasunapothabolu/winequalitypredict
 
 docker pull prasunapothabolu/winequalitypredict:latest
 
-**sudo docker run -v /home/ubuntu prasunapothabolu/winequalitypredict TestDataset.csv**
+**sudo docker run -v /home/ubuntu prasunapothabolu/mlwinequalpredict TestDataset.csv
+**
 ---
 ### Result & Summary
 
