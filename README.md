@@ -94,16 +94,17 @@ Decision Tree classifier give better performance. The metrics used to estimate p
 
 1) **Creating EC2 Instance**
 * **Step 1:** Under Compute Column in the `AWS Management Console` Click `EC2`
-* **Step 2:** Under the `Instances` click `Create Instance`
-* **Step 3:** Select the `AMI` of your choice. `Amazon Linux 2 AMI` is usually preferred
+* **Step 2:** Under the `Instances` click `Launch Instance`
+* **Step 3:** Select the `AMI` of your choice. `Ubuntu server 20.04` is usually preferred
 * **Step 4:** Select `Instance Type` I've chosen t2.micro as I'm using AWS Educate and this gives me t2.micro under free tier elgible
-* **Step 5:** Here one can either `review and launch` or `tweak security, configuration and storage` features of EC2.
+* **Step 5:** Select Key pair
+* Here one can either `review and launch` or `tweak security, configuration and storage` features of EC2.
 * Launch EC2 Instance
 
 2) **Installing Spark on EC2 Instance**
 * **Step 1:** Update EC2 using the command 
 ```bash
-sudo yum update -y
+sudo apt -y update
 ```
 * **step 2:** Check python version ```python3 --version```
 * **Step 3:** Instal pip 
@@ -112,7 +113,7 @@ sudo pip3 install --upgrade pip
 ```
 * **step 4:** Install Java and check if it works
 ```bash
-sudo yum install java-1.8.0-devel
+sudo apt install default-jre
 java --version
 ```
 * **step 5:** Install Py4j
@@ -125,13 +126,21 @@ pip install py4j
 !tar xf spark-3.2.1-bin-hadoop2.7.tgz 
 ```
 
-* **step 7:** Install findspark
+* **step 7:** Install pyspark
 ```bash
-sudo pip3 install findspark
+ pip install pyspark
 ```
-* **step 8:** Install findspark
+* **step 8:** Install numpy
 ```bash
 sudo pip3 install numpy
+```
+* **step 9:** Install pandas
+```bash
+sudo pip3 install pandas
+```
+* **step 9:** Install scikit-learn
+```bash
+sudo pip3 install -U scikit-learn
 ```
 3) **Running your Application in EC2**
 * Copy the PredictWineQuality.py file to the Ec2 instance ```
