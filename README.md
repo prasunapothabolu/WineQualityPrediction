@@ -307,8 +307,8 @@ docker push prasunapothabolu/mlwinequalpredict
 
 docker pull prasunapothabolu/mlwinequalpredict:latest
 
-**sudo docker run -v /home/ubuntu prasunapothabolu/mlwinequalpredict TestDataset.csv
-**
+sudo docker run -v /home/ubuntu prasunapothabolu/mlwinequalpredict TestDataset.csv
+
 ---
 ### Result & Summary
 > Decission tree classfier worked well compare to other classfiers . It ran in less time with accuracy 100 and F1 Score 100
