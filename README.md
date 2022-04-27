@@ -9,6 +9,10 @@ The Training Data was modelled using multiple classifiers to find classifier tha
 Logistic regression, GBT regressor, Random forest classifier, Decision Tress classifier are used.
 Decision Tree classifier give better performance. The metrics used to estimate performance are Run time,F1 score and Accuracy score.
 
+The application is designed to run logistic regression, Random forest classfier, Decission tree classfier, GBT regressor. you can pass parameter to choose classifier.
+if no classifier parameter is passed , application will predict using decission tree classifier since based on metrics it worked best.
+
+
 > Github Link: https://github.com/prasunapothabolu/WineQualityPrediction
 
 > Docker Hub:
@@ -144,52 +148,89 @@ sudo pip3 install -U scikit-learn
 ```
  **step 10:** set environment variables
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
  export SPARK_HOME=/home/ubuntu/spark-3.0.0-bin-hadoop2.7
+ 
  export PATH=$PATH:$SPARK_HOME/bin
+ 
  export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
+ 
  export PYSPARK_PYTHON=python3
+ 
  export PATH=$PATH:$JAVA_HOME/jre/bin
  
 3) **Running your Application in EC2**
 * Copy the ModelWineDataTrain.py,PredictWineQuality.py,TrainingDataset.csv,ValidationDataset.csv files to the Ec2 instance ```
 Note: we can copy using tools( mobaXtern, putty etc)
 or using commands 
-scp -i <"your .pem file"> predict.py :~/PredictWineQuality.py```
+scp -i <"your .pem file"> PredictWineQuality.py :~/PredictWineQuality.py```
 
-* Run the following command in Ec2 instance to start the model prediction :
-Example of using input file as argument . since we set environment variables we can use command python3 directly
+* Run the following command in Ec2 instance to start the model training if model file not exists on EC2 :
+  Example of using input file as argument . since we set environment variables we can use command python3 directly
 ```bash
 python3 ModelWineDataTrain.py validationDataset.csv
 ```
----
+* Run the following command in Ec2 instance to start the predict :
 
+Example of using input file as argument . since we set environment variables we can use command python3 directly.
+         a) the application is designed to run logistic regression, Random forest classfier, Decission tree classfier, GBT regressor. you can pass parameter to choose classifier.
+if no classifier parameter is passed , application will predict using decission tree classifier
+
+
+          lgr for logistic regression
+
+          rfc for Random forest classfier
+
+          dst for Decission tree classfier
+
+          gbt for GBT regressor
+  b)you can pass test data file with any name. please make sure file exists on EC2.
+commands:
+python3 PredictWineQuality.py TestDataset.csv lgr
+or
+python3 PredictWineQuality.py TestDataset.csv rfc
+or
+python3 PredictWineQuality.py TestDataset.csv dst
+or
+python3 PredictWineQuality.py TestDataset.csv gbt
+---
+* Outputs files are loaded in output folder.
+*
 ### EC2 Instance With Docker
 
 1) **Installation**
 > Assuming that the above steps (#EC2-Instance-without-Docker) were clear for the setting up of EC2. Go ahead with the below steps post the setting up and running of EC2 to install docker
 * **Step 1:** Command for installing the most recent Docker Community Edition package.
 ```bash
-sudo yum install docker -y
+sudo apt install docker.io
 ```
 * **Step 2:** Start the Docker service.
 ```bash
 sudo service docker start
 ```
-* **Step 3:**  Add the ec2-user to the docker group so you can execute Docker commands without using sudo.
+* **Step 3:**  check docker status
 ```bash
-sudo usermod -a -G docker ec2-user
+systemctl status docker.service
 ```
-* **Step 4:** Verify that the ec2-user can run Docker commands without sudo.
+* **Step 4:** Add the ubuntu to the docker group so you can execute Docker commands without using sudo.
+```bash
+sudo usermod -a -G docker ubuntu
+```
+* **Step 4:** Verify that the ubuntu can run Docker commands without sudo.
 ```bash
 docker  --version or docker info
 ```
 
 2) **Building Dockerfile**
-* **Step 1:** Type `touch Dockerfile` to create a Dockerfile
-* **Step 2:** nano Dockerfile and create the Dockerfile Image to automate the process
+* **Step 1:** Type `touch Dockerfile` to create a Dockerfile ( at location where code files ,data files exists)
+* **Step 2:** edit Dockerfile with all commands(which install all libraries,software etc) to create the Dockerfile Image to automate the process
 * **Step 3:** 
 ```bash
 sudo docker build . -f Dockerfile -t <Image name of your choice>
+
+ex:sudo docker build . -f Dockerfile -t winequaltrain
+
+and check image created or not using command sudo docker images
 ```
 
 3) **Pushing and Pulling created Image to DockerHub**
@@ -200,9 +241,17 @@ docker login: Type your credentials
 * **Step 2:** In order to push docker type the following commands
 ```bash
 docker tag <Local Ec2 Repository name>:<Tag name> <dockerhub username>/<local Ec2 Repository name>
+
+ex:
+
 ```
 ```bash
 docker push <dockerhub username>/<local Ec2 Repository name>
+
+ex:
+
+docker push prasunapothabolu/winetrainapp
+
 ```
 * **Step 3:** Pulling your Dockerimage back to Ec2 
 ```bash
@@ -210,16 +259,30 @@ docker pull <dockerhub username>/<Repository name>:<tag name>
 ```
 Example:
 ```bash
-docker pull sampathgonnuru/cs643-project2:latest
+docker pull prasunapothabolu/winetrainapp:latest
 ```
 * **Step 4:** Running my dockerimage
 ```bash
-sudo docker run -t <Given Image name>
+sudo docker run -t <user> <Given Image name>
 ```
-Example
+Example:
 ```bash
-docker run -it sampathgonnuru/cs643-project2:latest s3//mywineproject/ValidationDataset.csv 
+sudo docker run -v /home/ubuntu prasunapothabolu/winetrainapp TrainingDataset.csv
+
 ```
+*** Repeating same steps for prediction file image creation
+
+changed Dockerfile to use PredictWineQuality.py app
+
+sudo docker build . -f Dockerfile -t winequalitypredict
+
+docker tag winequalitypredict prasunapothabolu/winequalitypredict
+
+docker push prasunapothabolu/winequalitypredict
+
+docker pull prasunapothabolu/winequalitypredict:latest
+
+sudo docker run -v /home/ubuntu prasunapothabolu/winequalitypredict TestDataset.csv
 ---
 ### Result & Summary
 
