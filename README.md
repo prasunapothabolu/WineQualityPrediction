@@ -380,7 +380,7 @@ sudo docker images
 ```
 ```bash 
 below commands remove and cleanup all images
-docker image rm -f f3b1202282c1
+docker image rm -f <Image id>
 docker system prune --all --force
 ```
 
