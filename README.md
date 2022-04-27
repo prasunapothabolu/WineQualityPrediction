@@ -3,7 +3,7 @@
 
 A parallel Machine Learning application in Amazon AWS cloud platform built to predict the quality of Wine using Apache Spark, python.
 The Modeling data application is designed to run on EMR with 4 instances.
-Prediction application will run on EC2 single instance (with Docker and without Docker).
+Prediction application will run on EC2 single instance(ubuntu) (with Docker and without Docker).
 
 The Training Data was modelled using multiple classifiers to find classifier that give better performance.
 Logistic regression, GBT regressor, Random forest classifier, Decision Tress classifier are used.
@@ -15,7 +15,10 @@ if no classifier parameter is passed , application will predict using decission 
 
 > Github Link: https://github.com/prasunapothabolu/WineQualityPrediction
 
-> Docker Hub:
+> Docker Hub  Predict app container link : https://hub.docker.com/repository/docker/prasunapothabolu/mlwinequalpredict
+ 
+   Docker Hub  train app container link: https://hub.docker.com/repository/docker/prasunapothabolu/winetrainapp
+ 
 --- 
 ## Table of Contents
 
