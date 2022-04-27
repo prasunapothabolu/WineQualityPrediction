@@ -89,7 +89,7 @@ if no classifier parameter is passed , application will predict using decission 
  
 ---
 
-###Run Model Train data application on EMR Cluster
+### Run Model Train data application on EMR Cluster
 
 
 
@@ -203,7 +203,7 @@ python3 PredictWineQuality.py TestDataset.csv gbt
 
 ---
 * Outputs files are loaded in output folder.
-*
+
 ### EC2 Instance With Docker
 
 1) **Installation**
