@@ -237,6 +237,8 @@ and check image created or not using command sudo docker images
 * **Step 1:** Login to your dockerhub account through ec2
 ```bash
 docker login: Type your credentials
+
+if any issue please run below command sudo chmod 666 /var/run/docker.sock
 ```
 * **Step 2:** In order to push docker type the following commands
 ```bash
